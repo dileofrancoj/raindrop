@@ -7,7 +7,7 @@ const operations: Array<iOperation> = [
     n2: 1,
     operation: "+",
     result: 6,
-    transitionDuration: 5,
+    transitionDuration: 7,
     position: {
       x: 0,
       y: 0,
@@ -19,7 +19,7 @@ const operations: Array<iOperation> = [
     n2: 2,
     operation: "*",
     result: 72,
-    transitionDuration: 10,
+    transitionDuration: 8,
     position: {
       x: 80,
       y: 0,
@@ -31,7 +31,7 @@ const operations: Array<iOperation> = [
     n2: 3,
     operation: "*",
     result: 72,
-    transitionDuration: 15,
+    transitionDuration: 9,
     position: {
       x: 160,
       y: 0,

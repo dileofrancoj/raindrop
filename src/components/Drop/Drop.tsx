@@ -1,37 +1,32 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+
+import styled from "styled-components";
 import { iOperation } from "../../interfaces/Drop";
 
 interface DropProps {
   drop: iOperation;
-  deleteOperation: (id: string, time: number) => void;
+  deleteOperation?: (id: string, time: number) => void;
 }
 
-const Drop = ({ drop, deleteOperation }: DropProps) => {
-  const { id, transitionDuration, position, n1, operation, n2 } = drop;
+const BaseDrop = styled(motion.div)`
+  background-color: #0288d1;
+  height: 70px;
+  width: 70px;
+  border-radius: 0% 50% 50% 50%;
+  transform: rotate(45deg);
+  box-shadow: inset -25px 10px 0px -10px #03a9f4;
+  text-align: center;
+  padding: 16px;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+`;
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      deleteOperation(id, transitionDuration);
-    }, transitionDuration * 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  });
+const Drop = ({ drop }: DropProps) => {
+  const { transitionDuration, position, n1, operation, n2 } = drop;
+
   return (
-    <motion.div
-      style={{
-        width: 80,
-        height: 80,
-        borderRadius: 50,
-        backgroundColor: "#fd3",
-        position: "absolute",
-        left: 40,
-        top: 40,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+    <BaseDrop
       animate={{
         x: [position.x, position.x],
         y: [position.y, 1000],
@@ -41,7 +36,7 @@ const Drop = ({ drop, deleteOperation }: DropProps) => {
       <div style={{ width: 40 }}>
         {n1} {operation} {n2}
       </div>
-    </motion.div>
+    </BaseDrop>
   );
 };
 export default Drop;
